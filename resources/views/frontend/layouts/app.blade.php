@@ -10,6 +10,37 @@
     <link rel="stylesheet" href="{{ asset('build/assets/css/header.css') }}">
     <link href="{{ asset('/build/assets/libs/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
 </head>
+<style>
+    /* Fix for fixed navbar */
+body {
+    padding-top: 2rem;
+}
+
+/* Sidebar */
+.sidebar {
+    position: sticky;
+    top: 90px;
+}
+
+.sidebar-link {
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+    background-color: #f8f9fa;
+    color: #000;
+}
+
+/* Footer links */
+.footer-link:hover {
+    color: #ffc107 !important;
+}
+
+</style>
 <body class="bg-light">
 
     {{-- Header --}}
@@ -83,7 +114,7 @@
     <div class="container-fluid">
         <div class="row">
             <!-- 📌 Sidebar show when user login -->
-            <aside class="col-md-3 col-lg-2 d-md-block bg-white sidebar vh-100 pt-5 shadow-sm">
+            <!-- <aside class="col-md-3 col-lg-2 d-md-block bg-white sidebar vh-100 pt-5 shadow-sm">
                 <ul class="nav flex-column mt-4">
                     <li class="nav-item">
                         <a class="nav-link active fw-semibold" href="#">🏠 Dashboard</a>
@@ -97,8 +128,37 @@
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="#">⚙ Settings</a>
                     </li> -->
+               <!--  </ul>
+            </aside> -->
+            <aside class="col-md-3 col-lg-2 d-md-block bg-white sidebar vh-100 pt-4 border-end">
+                <ul class="nav flex-column gap-1 mt-4">
+
+                    <li class="nav-item">
+                        <a class="nav-link active sidebar-link" href="#">
+                            🏠 Dashboard
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link sidebar-link" href="#">
+                            🛠 Service History
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link sidebar-link" href="#">
+                            💰 Transactions
+                        </a>
+                    </li>
+
                 </ul>
+                <li class="nav-item">
+                        <a class="nav-link sidebar-link text-danger" href="#">
+                         Logout
+                        </a>
+                    </li>
             </aside>
+
             <!-- 🧠 Main Content -->
             <main class="col-md-9 col-lg-10 ms-sm-auto px-4 pt-5">
                 <!-- <div class="mt-4">
