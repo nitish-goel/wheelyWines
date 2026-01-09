@@ -141,9 +141,12 @@
             </main>
 
             {{-- Footer --}}
-            <footer>
+            <!-- <footer>
                 <p>© {{ date('Y') }} Car Service</p>
-            </footer>
+            </footer> -->
+            @extends('frontend.layouts.footer')
+           
+
         </div>
     </div>
 </body>
