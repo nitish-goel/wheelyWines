@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Service;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -21,9 +22,13 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call([
-            AppointmentSeeders::class,
-            ServiceSeeders::class
-        ]);
+        
+        // $this->call([
+            //     AppointmentSeeders::class,
+            //     ServiceSeeders::class
+            // ]);
+
+            // User::factory()->count(5)->create();
+            Service::factory(4)->create();
     }
 }

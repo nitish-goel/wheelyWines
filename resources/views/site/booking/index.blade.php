@@ -3,7 +3,7 @@
 @section('title', 'Book Appointment')
 
 @section('content')
-    <h2>{{ $service->name }}</h2>
+    <h2>{{ echo $services; }}</h2>
 
     <form method="POST" action="{{ route('appointment') }}">
         @csrf

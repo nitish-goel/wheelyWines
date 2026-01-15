@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Service;
 use App\Models\Appointment;
 
 class BookingController extends Controller
@@ -11,7 +12,11 @@ class BookingController extends Controller
 
     public function index()
     {
-        $services = Service::where('status', 1)->get();
+        $services = Service::where('status', 0)->get();
+        echo '<pre>';
+        print_r($services);
+        echo ' </pre>';
+        die;
         return view('Site.booking.index', compact('services'));
     }
     public function store(Request $request)

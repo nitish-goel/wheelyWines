@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('car_name',150);
             $table->string('car_model',150);
             $table->string('service_type',200);
-            $table->string('payment',150);
+            $table->integer('payment')->default(0);
             $table->string('complete_on',150);
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

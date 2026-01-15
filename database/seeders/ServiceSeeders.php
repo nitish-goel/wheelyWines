@@ -23,7 +23,7 @@ class ServiceSeeders extends Seeder
         ]);
 
         $Services->each(function($service){
-            Service::insert($service);
+            Service::create($service);
         });
     }
 }

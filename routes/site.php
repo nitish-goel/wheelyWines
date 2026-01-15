@@ -15,5 +15,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Route::get('/services/{id}', [ServiceController::class, 'show'])->name('service.show');
 
-Route::post('/book-appointment', [BookingController::class, 'store'])->name('appointment');
+Route::get('/appointment', [BookingController::class, 'index'])->name('appointment');
+Route::post('/book-appointment', [BookingController::class, 'store'])->name('book-appointment');
 

@@ -316,7 +316,7 @@
                                                 id="hs_cos_wrapper_header_button_"
                                                 class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text"
                                                 style="" data-hs-cos-general-type="widget"
-                                                data-hs-cos-type="rich_text"><a href="#"
+                                                data-hs-cos-type="rich_text"><a href="{{ route('appointment') }}"
                                                     class="theme-btn btn-style-one">Book a Schedule </a></span></div>
                                     </div>
                                 </div>
