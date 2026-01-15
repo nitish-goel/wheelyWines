@@ -1,0 +1,455 @@
+:root {
+    --primary-color: #01adef;
+    --white-color: #fff;
+    --black-color: #000;
+    --blue-color: #00c5e7;
+    --border-color: #28282840;
+    --red-color: #e21e22;
+    --lightbrown-color: #757575;
+    --pink-background: #ff49b0;
+    --gold-color: var(--primary-color);
+    --green:#0b2623;
+  }
+  
+  .con-code {
+    display: flex;
+    gap: 10px;
+  }
+  
+  @media (max-width: 576px) {
+    .cont-reg {
+      padding: 0;
+    }
+  
+    .for-passs {
+      font-size: 22px !important;
+    }
+  }
+  
+  .main-form-page {
+    position: relative;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: #000000e6;
+  }
+  
+  
+  
+  .section {
+    height: 100vh;
+    width: 100%;
+    padding: 50px 25px;
+    position: relative;
+    text-align: center;
+  }
+  
+  .main-form-page::before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-image: url("../../uploads/Trading3.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+  
+  @media (max-width: 1200px) {
+    .section::before {
+      background-position: center;
+    }
+  }
+  .sub-title{
+    max-width: 400px;
+  }
+  .section::after{
+    height: 467px;
+      width: 628px;
+      bottom: 40px;
+      right: 10px;
+      filter: grayscale(1);
+  }
+  
+  @media (max-width: 1130px) {
+    .cont-reg {
+      /* justify-content: center !important; */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .section::after {
+      width: 100%;
+      height: 100%;
+      transform: rotate(0deg);
+      bottom: 0px;
+      left: 0px;
+      background-position: bottom;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .cont-reg {
+      align-items: start !important;
+    }
+  
+    .sub-title {
+      margin-top:43px !important;
+    }
+  
+    .forgot-sub-title {
+      margin-top: 90px !important;
+    }
+  }
+  @media(max-width:992px){
+    .section::after{
+      display: none;
+    }
+    .cont-reg{
+      justify-content: center !important;
+    }
+  }
+  
+  /* .section::after {
+      position: absolute;
+      content: "";
+      height: 60%;
+      width: 32%;
+      bottom: 0;
+      right: 0;
+      background-image: url('../../uploads/forex_trade.png');
+      background-position: bottom;
+      background-size: contain;
+      background-repeat: no-repeat;
+      z-index: -1;
+  } */
+  
+  .login-heading {
+    display: flex;
+    align-items: center;
+  }
+  
+  .main-form-page .left img {
+    height: 52px;
+    width: auto;
+  }
+  
+  .main-form-page .left h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: 10px;
+  }
+  
+  .main-form-page .left p {
+    font-size: 14px;
+    font-weight: 200;
+    color: var(--white-color);
+    line-height: 18px;
+  }
+  
+  .main-form-page .left .main-form-page .left
+  /* .main-form-page::after{
+      position: absolute;
+      background-image:url(../../uploads/red-ribbon-blank-white-background.jpg);
+      content: "";
+      height: 100%;
+      z-index: -1;
+      width: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+  } */
+  
+  .main-form-page .right {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+  
+  .form-design {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .sub-title .login-heading img {
+    height: 60px;
+    width: auto;
+  }
+  
+  .sub-title {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #ffffff57;
+    /* box-shadow: 0 0 35px rgb(0 0 0 / 10%); */
+    /* box-shadow: 0 0 3px #fff; */
+    padding: 45px 30px;
+    max-width: 440px;
+    width: 100%;
+    backdrop-filter: blur(50px);
+    margin: 20px 0;
+  }
+  
+  .form-set {
+    justify-content: center;
+  }
+  
+  @media (max-width: 576px) {
+    .sub-title {
+      padding: 50px 20px 50px;
+      width: 100% !important;
+    }
+  
+    .form-design {
+      display: initial;
+    }
+  
+    .background_pic_form {
+      display: flex;
+      justify-content: center;
+    }
+  
+    /* .for_get{
+              flex-direction: column;
+              gap: 3px;
+              align-items: start;
+          } */
+    label.remember-1 {
+      margin: 0;
+    }
+  
+    .m-0.remem-1 {
+      padding-bottom: 0px !important;
+      font-size: 13px;
+    }
+  
+    .forget-pass {
+      font-size: 13px !important;
+    }
+  }
+  
+  @media (max-width: 345px) {
+    .for_get {
+      flex-direction: column;
+      gap: 10px;
+      align-items:start;
+    }
+  }
+  
+  /* .sub-title::before {
+      position: absolute;
+      background-image: url('../../uploads/arrow1_blue.png');
+      content: "";
+      height: 36px;
+      width: 140px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-size: contain;
+      top: 0;
+      right: 0;
+  }
+  
+  .sub-title::after {
+      position: absolute;
+      background-image: url('../../uploads/arrow2_blue.png');
+      content: "";
+      height: 45px;
+      width: 145px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-size: contain;
+      bottom: 0px !important;
+      left: 0;
+  } */
+  
+  /* .background_pic_form{
+      position: relative;
+      z-index: 1;
+   
+  
+  }
+  .background_pic_form::after{
+      background-image: url('../../uploads/back.svg');
+      content: "";
+      height: 100%;
+      width: 100%;
+      background-repeat: no-repeat;
+      top: 0;
+      right: 0;
+      position: absolute;
+      z-index: -1;
+      
+  } */
+  /* .sub-title::after{
+      position: absolute;
+      background-image:url('../../uploads/arrow2_blue.png');
+      content: "";
+      height: 46px;
+      width: 34%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-size: contain;
+      bottom: 0px;
+      left: 0;
+  } */
+  .login-heading h4 {
+    font-size: 30px;
+    font-weight: 400;
+    color: #fff;
+    text-align: start;
+    margin-bottom: 0;
+  }
+  
+  .login-heading p {
+    text-align: center;
+    color: var(--black-color);
+  }
+  
+  .panel-form {}
+  
+  .user-field {
+    /* padding-bottom: 20px; */
+    position: relative;
+  }
+  
+  /* .user-field input {
+      width: 100%;
+      padding: 7px 11px;
+      border-radius: 10px;
+      border: 1px solid var(--primary-color);
+      outline: none;
+      font-weight: 500;
+      font-size: 14px;
+      background-color: #fff; */
+  
+  /* } */
+  
+  .user-field i {
+    position: absolute;
+    top: 12px;
+    font-size: 15px;
+    right: 13px;
+    color: black;
+  }
+  
+  .form-control:focus {
+    border: 1px solid white !important;
+    background: transparent;
+  }
+  
+  .form-control::placeholder {
+    color: #000000;
+  }
+  
+  .password-field {
+    position: relative;
+  }
+  
+  .form-control::placeholder {
+    color: #000000 !important;
+  }
+  
+  .form-control {
+    width: 100%;
+      padding: 7px 30px 7px 11px;
+      border-radius: 0px;
+      border: none;
+      border: 1px solid #364947;
+      outline: none;
+      font-weight: 500;
+      font-size: 14px;
+      height: 42px;
+      background-color: transparent;
+      color: #000000 !important;
+      border-radius: 12px !important;
+  
+  
+  
+  }
+  .register-titlee{
+    padding: 32px 30px;
+  }
+  .password-field i {
+    position: absolute;
+    top: 12px;
+    font-size: 15px;
+    right: 9px;
+    color: black;
+    cursor: pointer;
+  }
+  
+  .main-remember {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* padding-bottom: 20px; */
+  }
+  
+  .forget-pass {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--white-color);
+  }
+  
+  .forget-pass:hover {
+    color: #000;
+  }
+  .forget-pass{
+    transition: all 0.3s linear;
+  }
+  
+  .login-btn {
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .create-acc a {
+    color: var(--white-color);
+  }
+  
+  .login-btn button {
+    border-radius: 5px;
+    border: none;
+    padding: 13px 36px;
+    color: #000;
+    background: #fff;
+    width: 100%;
+  }
+  
+  .login-btn button:hover {
+    color: var(--white-color);
+    background-color: #000;
+  }
+  
+  .earth_pic {
+    position: relative;
+    top: -75px;
+  }
+  
+  .earth_pic img {
+    position: absolute;
+    height: 62px;
+    right: 18px;
+    top: -11px;
+    border-radius: 45px;
+    animation: earth_rotate 3s linear infinite normal;
+    transition: all 0.3s linear;
+  }
+  
+  @keyframes earth_rotate {
+    0% {
+      transform: rotate(360deg);
+    }
+  
+    100% {
+      transform: rotate(0deg);
+    }
+  }
