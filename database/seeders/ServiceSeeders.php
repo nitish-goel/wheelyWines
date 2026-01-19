@@ -13,17 +13,21 @@ class ServiceSeeders extends Seeder
      */
     public function run(): void
     {
-        $Services = collect([
-            ['name' => 'Performance Upgrade'],
-            ['name' => 'Transmission Services'],
-            ['name' => 'Break Repair & Service'],
-            ['name' => 'Engine Service & Repair'],
-            ['name' => 'Tyre & Wheels'],
-            ['name' => 'Denting & Painting']
-        ]);
+        // $Services = collect([
+        //     ['name' => 'Performance Upgrade'],
+        //     ['name' => 'Transmission Services'],
+        //     ['name' => 'Break Repair & Service'],
+        //     ['name' => 'Engine Service & Repair'],
+        //     ['name' => 'Tyre & Wheels'],
+        //     ['name' => 'Denting & Painting']
+        // ]);
 
-        $Services->each(function($service){
-            Service::create($service);
-        });
+        // $Services->each(function($service){
+        //     Service::create($service);
+        // });
+
+        // Seeding-Factory file can be also used
+        Service::factory(5)->create();
+
     }
 }
