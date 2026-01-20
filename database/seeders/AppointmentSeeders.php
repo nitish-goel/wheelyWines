@@ -19,9 +19,12 @@ class AppointmentSeeders extends Seeder
             "car_company" => 'Tata',
             "car_name" => 'Scarpio',
             "car_model" => '2026',
-            "service_type" => 'Tyre & wheels',
-            "payment" => '1',
-            "complete_on" => 'monday',
+            "service_id" => 2,
+            "service_name" => 'Transmission Services',
+            "amount" => 50,
+            "payment_id" => 1,
+            "order_id" => 1,
+            "status" => 1
         ]);
     }
 }

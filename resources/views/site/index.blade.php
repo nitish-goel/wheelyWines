@@ -13,7 +13,7 @@
     <meta name="twitter:description" content="">
     <meta name="twitter:title" content="Home">
 
-    <script id="hs-search-input__valid-content-types" type="application/json">
+    <!-- <script id="hs-search-input__valid-content-types" type="application/json">
     [
       
         "SITE_PAGE",
@@ -29,7 +29,7 @@
         "HS_CASE_STUDY"
       
     ]
-  </script>
+  </script> -->
 
     <style>
         html {
@@ -104,7 +104,7 @@
     <link rel="stylesheet" href="{{ asset('/site/css/module_search_input.min.css') }}">
 
    
-    <title>WheelyWines</title>
+    <title>@yield('title', 'WheelyWines')</title>
     <!-- <link href="{{asset('/css/header.css')}}" rel="stylesheet" />
     <link href="{{ asset('/libs/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" /> -->
 
