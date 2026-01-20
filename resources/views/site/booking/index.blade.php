@@ -209,13 +209,14 @@
                                 <div class="text-danger">{{ $error }}</div>
                             @endforeach
                         @endif
+                        
                         <h1>Book Service Appointment</h1>
                         <p class="booking-subtitle">Schedule your car service in just a few clicks</p>
 
                         @if($services->isEmpty())
                             <p class="text-center">No services available.</p>
                         @else
-                            <form method="POST" action="{{ route('appointmentPayment') }}" class="booking-form" id="appointmentForm">
+                            <form method="POST" action="{{ route('book-appointment') }}" class="booking-form" id="appointmentForm">
                                 @csrf
                                 <div class="form-group">
                                     <label>Full Name</label>
