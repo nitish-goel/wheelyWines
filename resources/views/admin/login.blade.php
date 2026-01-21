@@ -31,9 +31,9 @@
     <!-- Bootstrap Css -->
     <!-- <link href="commonall.css" id="bootstrap-style" rel="stylesheet" type="text/css" /> -->
 
-    <link href="{{ asset('/build/assets/libs/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/admin/libs/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
-    <link href="{{ asset('/build/assets/css/login.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/admin/css/login.css')}}" rel="stylesheet" type="text/css" />
 </head>
 
 <style>
@@ -61,7 +61,7 @@
 
 
 
-<body>
+<body >
 
 
     <div class="main-form-page">
@@ -88,7 +88,7 @@
                                 @endforeach
                             @endif
                         </p>
-                        <form action="{{ route('login') }}" method="post">
+                        <form action="{{ route('adminLogin') }}" method="post">
                             @csrf
                         <h4 class="text-center text-black p-2 ">Login</h4>
                         <!-- <input type="hidden" class="form-control" id="wallet_address" name="wallet_address"> -->
@@ -96,7 +96,7 @@
                         <div class="panel-form">
                             <!-- <span class="ion ion-locked form-control-feedback "></span> -->
                             <div class="user-field  user-1">
-                                <input type="text" class="form-control" placeholder="Enter E-mail" name="email" value="" />
+                                <input type="text" class="form-control" placeholder="Enter name" name="name" value="" />
                                 <i class="fa-solid fa-user"></i>
                             </div>
                             <div class="password-field password-1">
@@ -110,7 +110,7 @@
 
                         </div>
 
-                        <div class="details password-form">
+                        <!-- <div class="details password-form">
                             <div class="d-flex align-item-center justify-content-between position-relative for_get">
 
                                 <div class=" m-0  remem-1">
@@ -123,7 +123,7 @@
                                 <a class="forget-pass" href="Dashboard/User/forgot_password">Forgot Password?</a>
 
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="login-btn">
                             <button type="submit" value="login" class="btn from-right">Log in</button>
@@ -133,11 +133,11 @@
 
                         </form>
 
-                        <div class="text-center create-acc mt-3">
+                        <!-- <div class="text-center create-acc mt-3">
 
                             <p class="m-0 text-white">Still no account? <a href="Dashboard/Register" class="tgreen">Create new account</a></p>
 
-                        </div>
+                        </div> -->
                     </div>
                     <!-- </div> -->
                    

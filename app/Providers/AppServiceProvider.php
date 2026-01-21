@@ -22,5 +22,6 @@ class AppServiceProvider extends ServiceProvider
     {
         View::share('logo', config('app.logo'));
         View::share('url', config('app.url'));
+        View::share('title', config('app.name'));
     }
 }

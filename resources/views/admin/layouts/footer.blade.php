@@ -1,49 +1,74 @@
-<footer class="bg-dark text-light mt-auto">
-    <div class="container py-4">
-        <div class="row gy-3">
 
-            <!-- Brand -->
-            <div class="col-md-4">
-                <div class="d-flex align-items-center gap-2 mb-2">
-                    <img src="{{ $logo }}" alt="logo" height="40">
-                    <h5 class="mb-0 text-warning fw-bold">Wheely Wines</h5>
+                <div class="main-content">
+                    <div class="container-fluid">
+                        
+                        <footer class="footer">
+                            <!-- To the right -->
+                        
+                            <!-- Default to the left -->
+                            <div><strong>Copyright &copy; {{ date('Y') }}.</strong>{{ $title }} All rights reserved.</div>
+
+                        </footer>
+                    </div>
                 </div>
-                <p class="text-muted small mb-0">
-                    Premium car servicing at your doorstep.  
-                    Quality, transparency & trust.
-                </p>
-            </div>
 
-            <!-- Links -->
-            <div class="col-md-4">
-                <h6 class="text-uppercase fw-semibold mb-3">Quick Links</h6>
-                <ul class="list-unstyled small">
-                    <li class="mb-2">
-                        <a href="{{ route('home') }}" class="text-decoration-none text-light footer-link">Home</a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="{{ route('services') }}" class="text-decoration-none text-light footer-link">Services</a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-decoration-none text-light footer-link">Contact</a>
-                    </li>
-                </ul>
-            </div>
 
-            <!-- Contact -->
-            <div class="col-md-4">
-                <h6 class="text-uppercase fw-semibold mb-3">Contact</h6>
-                <p class="small mb-1">📍 India</p>
-                <p class="small mb-1">📞 +91 9XXXX XXXXX</p>
-                <p class="small mb-0">✉ support@wheelywines.com</p>
-            </div>
+                </div>
+            <!-- end main content-->
 
-        </div>
+<!-- END layout-wrapper -->
 
-        <hr class="border-secondary my-4">
 
-        <div class="text-center small text-muted">
-            © {{ date('Y') }} Wheely Wines. All rights reserved.
-        </div>
-    </div>
-</footer>
+
+
+</body>
+
+
+<!-- JAVASCRIPT -->
+<!-- jQuery FIRST -->
+<script src="{{ asset('admin/libs/jquery.min.js') }}"></script>
+
+<!-- Bootstrap -->
+<script src="{{ asset('admin/libs/bootstrap.bundle.min.js') }}"></script>
+
+<!-- Plugins -->
+<script src="{{ asset('admin/libs/metisMenu.min.js') }}"></script>
+<script src="{{ asset('admin/libs/simplebar.min.js') }}"></script>
+<script src="{{ asset('admin/libs/node-waves/waves.min.js') }}"></script>
+
+<!-- App JS (LAST) -->
+<script src="{{ asset('admin/js/app.js') }}"></script>
+
+<!-- <script src="NewDashboard/assets/libs/jquery/jquery.min.js"></script>
+<script src="NewDashboard/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="NewDashboard/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="NewDashboard/assets/libs/node-waves/waves.min.js"></script> -->
+
+<!-- Peity chart-->
+<!-- <script src="NewDashboard/assets/libs/peity/jquery.peity.min.js"></script> -->
+
+<!-- Plugin Js-->
+<!-- <script src="NewDashboard/assets/libs/chartist/chartist.min.js"></script>
+<script src="NewDashboard/assets/libs/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js"></script>
+
+<script src="NewDashboard/assets/js/pages/dashboard.init.js"></script>
+
+<script src="NewDashboard/assets/js/app.js"></script> -->
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script>
+    //$("#tableView").DataTable();
+    $(document).ready(function() {
+        $('#tableView').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+    });
+</script>
+</html>
+        

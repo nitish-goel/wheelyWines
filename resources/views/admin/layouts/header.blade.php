@@ -1,54 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../{{ $logo }}" type="image/x-icon">
 
-    
-    <title>@yield('title', '{{ $title }}')</title>
-   
-
-
-    <link  href="{{ asset('/admin/css/style.css') }}" rel="stylesheet">
-    <link  href="{{ asset('/admin/css/app.min.css') }}" rel="stylesheet" id="app-style"  type="text/css" >
-    <link  href="{{ asset('/admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" >
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link href="{{ asset('/admin/libs/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('/admin/libs/icons.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-</head>
-
-
-
-<style>
-    .forex-img {
-        width: 70px !important;
-        height: 100% !important;
-        border-radius: 8px !important;
-    }
-
-    .content-header {
-        color: #fff;
-    }
-
-    .breadcrumb-item>a {
-        color: #000;
-    }
-
-    .breadcrumb-item.active {
-        color: #000 !important;
-    }
-
-    .breadcrumb-item+.breadcrumb-item::before {
-        color: #000 !important;
-
-    }
-</style>
-<body data-sidebar="dark">
-    <div id="layout-wrapper" class="admin__header background_layer">
-    
         <header id="page-topbar">
             <div class="navbar-header">
                 <div class="d-flex align-items-center header__logo_sec">
@@ -335,20 +285,6 @@
             </div>
         </div>
            
-
-        <div class="main-content main_content_new dashboardcard background_layer">
-            <div class="page-content">
-                <div class="container-fluid">
-                        <!-- 🧠 Main Content -->
-                        
-                            {{-- Page Content --}}
-                                @yield('content')
-                            
-                </div>
-            </div>
-        </div>
-        <div class="more_footer">
-            @extends('Admin.layouts.footer')    
-        </div>
+    
+          
            
-   

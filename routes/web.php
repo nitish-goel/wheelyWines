@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Site\HomeController;
-use App\Http\Controllers\Site\ServiceController;
-use App\Http\Controllers\Site\BookingController;
+use App\Http\Controllers\Admin\ManagementController;
+
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -35,3 +34,8 @@ use App\Http\Controllers\Site\BookingController;
 // // API
 // Route::post('register',[Authentor::class,'signup'])->name('register');
 // Route::post('login',[Authentor::class,'signin'])->name('login');
+
+Route::view('/login','admin.login');
+Route::post('management/login', [ManagementController::class, 'login'])->name('adminLogin');
+Route::get('/management', [ManagementController::class, 'showServices']);
+Route::get('/admin/dashboard', [ManagementController::class, 'index'])->name('dashboard');
