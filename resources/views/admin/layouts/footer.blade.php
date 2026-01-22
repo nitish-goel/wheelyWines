@@ -1,4 +1,6 @@
 
+            <div class="more_footer">
+
                 <div class="main-content">
                     <div class="container-fluid">
                         
@@ -6,11 +8,12 @@
                             <!-- To the right -->
                         
                             <!-- Default to the left -->
-                            <div><strong>Copyright &copy; {{ date('Y') }}.</strong>{{ $title }} All rights reserved.</div>
+                            <div><strong>Copyright &copy; {{ date('Y') }}.</strong> {{ $title }} All rights reserved.</div>
 
                         </footer>
                     </div>
                 </div>
+            </div>
 
 
                 </div>

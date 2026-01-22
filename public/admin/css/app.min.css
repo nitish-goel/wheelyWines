@@ -862,7 +862,7 @@ body[data-sidebar="dark"] #sidebar-menu ul > li > a.mm-active i {
 }
 
 body[data-sidebar="dark"].vertical-collpsed {
-  min-height: 1200px;
+  min-height: 100%;
 }
 
 body[data-sidebar="dark"].vertical-collpsed
@@ -1799,7 +1799,7 @@ body[data-layout="horizontal"][data-layout-size="boxed"] .navbar-header {
 .mini-stat-img::after {
   position: absolute;
   content: "";
-  background-image: url("../../../uploads/round.png");
+  background-image: url("/admin/img/settings.png");
   background-size: cover;
   background-repeat: no-repeat;
   top: -9px;

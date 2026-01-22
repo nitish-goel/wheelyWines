@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{ asset('/site/images/thumbnail.png') }}" type="image/x-icon">
     
-    <title>@yield('title', 'WheelyWines')</title>
+    <title>@yield('title',  $title)</title>
     <!-- <link rel="stylesheet" href="{{ asset('build/assets/css/header.css') }}">
     <link href="{{ asset('/build/assets/libs/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" /> -->
     

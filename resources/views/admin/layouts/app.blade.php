@@ -7,16 +7,16 @@
     <link rel="shortcut icon" href="../{{ $logo }}" type="image/x-icon">
 
     
-    <title>@yield('title', '{{ $title }}')</title>
+    <title>@yield('title',  $title )</title>
    
 
 
     <link  href="{{ asset('/admin/css/style.css') }}" rel="stylesheet">
     <link  href="{{ asset('/admin/css/app.min.css') }}" rel="stylesheet" id="app-style"  type="text/css" >
     <link  href="{{ asset('/admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" >
+    <link href="{{ asset('/admin/libs/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link href="{{ asset('/admin/libs/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/admin/libs/icons.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
 </head>
 
@@ -45,6 +45,7 @@
         color: #000 !important;
 
     }
+    
 </style>
 <body data-sidebar="dark">
     <div id="layout-wrapper" class="admin__header background_layer">
@@ -60,7 +61,7 @@
                             class="logo logo-light d-block Logo_newLInk">
                             <div class="logo__sec">
 
-                                <img class="forex-img" src="{{$logo}}" alt="logo">
+                                <img class="forex-img" src="../{{$logo}}" alt="logo">
 
                             </div>
                         </a>
@@ -156,15 +157,7 @@
 
                             </ul>
                         </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                <i class="fa-solid fa-user"></i>
-                                <span>Archievers</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="#">Bike Coupon Archievers</a></li>
-                            </ul>
-                        </li>
+                        
 
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -199,62 +192,6 @@
                             </ul>
                         </li>
 
-                            
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                <i class="ti-package"></i>
-                                <span>Administrator</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                 <li><a href="#">Manage</a></li>
-                            </ul>
-                        </li>
-                            
-                            
-
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                <i class="ti-id-badge"></i>
-                                <span> Ads Details</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="#">Create Task</a></li>                                
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                <i class="ti-id-badge"></i>
-                                <span> Task </span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="#">Create Image Task</a></li>                              
-
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                <i class="ti-id-badge"></i>
-                                <span> Fake Registration </span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="#">Fake Registration </a></li>                                
-                            </ul>
-                        </li>
-
-
-
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                <i class="ti-id-badge"></i>
-                                <span>Installment</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="#">Pending Installment</a>
-                                </li>
-
-                            </ul>
-                        </li>
-
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
                                 <i class="ti-id-badge"></i>
@@ -267,17 +204,6 @@
                             </ul>
                         </li>
 
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                <i class="ti-id-badge"></i>
-                                <span> KYC Details</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                               
-                                <li><a href="#">Pending Kyc</a></li>
-                               
-                            </ul>
-                        </li>
                         <li>
 
                             <a href="javascript: void(0);" class="has-arrow waves-effect withdraw_spacing">
@@ -347,8 +273,6 @@
                 </div>
             </div>
         </div>
-        <div class="more_footer">
             @extends('Admin.layouts.footer')    
-        </div>
            
    

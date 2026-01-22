@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="{{ asset('/site/images/thumbnail.png') }}">
+    <link rel="shortcut icon" href="{{ $logo }}">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -104,7 +104,7 @@
     <link rel="stylesheet" href="{{ asset('/site/css/module_search_input.min.css') }}">
 
    
-    <title>@yield('title', 'WheelyWines')</title>
+    <title>@yield('title',  $title)</title>
     <!-- <link href="{{asset('/css/header.css')}}" rel="stylesheet" />
     <link href="{{ asset('/libs/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" /> -->
 
@@ -207,7 +207,7 @@
                                             style="" data-hs-cos-general-type="widget" data-hs-cos-type="logo"><a
                                                 href="{{$url}}"
                                                 id="hs-link-site_logo_hs_logo_widget"
-                                                style="border-width:0px;border:0px;"><img src="{{asset('/site/images/logo.png')}}"
+                                                style="border-width:0px;border:0px;"><img src="{{$logo}}"
                                                     class="hs-image-widget " height="50"
                                                     style="height: auto;width:60px;border-width:0px;border:0px;"
                                                     width="180" alt="Company logo" title="Company logo"
