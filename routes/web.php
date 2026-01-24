@@ -35,7 +35,12 @@ use App\Http\Controllers\Admin\ManagementController;
 // Route::post('register',[Authentor::class,'signup'])->name('register');
 // Route::post('login',[Authentor::class,'signin'])->name('login');
 
-Route::view('/login','admin.login');
+Route::view('/login','admin.login')->name('login');
 Route::post('management/login', [ManagementController::class, 'login'])->name('adminLogin');
-Route::get('/management', [ManagementController::class, 'showServices']);
-Route::get('/admin/dashboard', [ManagementController::class, 'index'])->name('dashboard');
+Route::get('admin/logout', [ManagementController::class, 'logout'])->name('logout')->middleware('auth:admin');
+
+Route::get('/admin/dashboard', [ManagementController::class, 'index'])->name('dashboard')->middleware('auth:admin');
+// Reports
+Route::get('/admin/allUsers', [ManagementController::class, 'users'])->name('allUsers')->middleware('auth:admin');
+// Route::get('/management', [ManagementController::class, 'showServices']);
+

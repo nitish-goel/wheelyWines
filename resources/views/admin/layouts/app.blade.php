@@ -34,18 +34,20 @@
     }
 
     .breadcrumb-item>a {
-        color: #000;
+        color: #fff;
     }
 
-    .breadcrumb-item.active {
-        color: #000 !important;
-    }
+    /* .breadcrumb-item.active {
+         color: #000 !important; 
+    } */
 
     .breadcrumb-item+.breadcrumb-item::before {
         color: #000 !important;
 
     }
-    
+    .text-dark {
+  color: #fff !important;
+}
 </style>
 <body data-sidebar="dark">
     <div id="layout-wrapper" class="admin__header background_layer">
@@ -57,7 +59,7 @@
                     <div class="Navbar__new">
 
 
-                        <a href="#"
+                        <a href="{{route('dashboard')}}"
                             class="logo logo-light d-block Logo_newLInk">
                             <div class="logo__sec">
 
@@ -122,10 +124,8 @@
          <!-- ========== Left Sidebar Start ========== -->
         <div class="vertical-menu">
             <div data-simplebar class="h-100">
-                <a href="#dashboard" class="brand-link" style="">
-
-
-                </a>
+                <!-- <a href="#dashboard" class="brand-link" style="">
+                </a> -->
 
                 <!--- Sidemenu -->
                 <div id="sidebar-menu">
@@ -134,7 +134,7 @@
                         <li class="menu-title">Main</li>
 
                         <li>
-                            <a href="#dashboard" class="waves-effect">
+                            <a href="{{route('dashboard')}}" class="waves-effect">
                                 <i class="ti-dashboard "></i>
                                 <span>Dashboard</span>
                             </a>
@@ -142,7 +142,7 @@
                         <li>
                             <a href="#crypto" class="waves-effect">
                                 <i class="ti-notepad "></i>
-                                <span>USDT Reports</span>
+                                <span>Appointments Report</span>
                             </a>
                         </li>
 
@@ -152,14 +152,12 @@
                                 <span> User Details</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="#">All Members</a></li>
-                               
-
+                                <li><a href="{{ route('allUsers') }}">All Members</a></li>                            
                             </ul>
                         </li>
                         
 
-                        <li>
+                        <!-- <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
                                 <i class="ti-settings "></i>
                                 <span> Settings</span>
@@ -171,7 +169,7 @@
 
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                <!-- <i class="ti-package income_icon"></i> -->
+                                 <i class="ti-package income_icon"></i> 
                                 <i class="fa-solid fa-pen-to-square"></i>
                                 <span> Income Reports</span>
                             </a>
@@ -207,7 +205,7 @@
                         <li>
 
                             <a href="javascript: void(0);" class="has-arrow waves-effect withdraw_spacing">
-                                <!-- <i class="ti-package"></i> -->
+                                <i class="ti-package"></i>
                                 <i class="fa-solid fa-money-bill-transfer"></i>
                                 <span class="">Withdraw Management</span>
                             </a>
@@ -246,9 +244,9 @@
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="#"> USDT Transactions</a></li>                               
                             </ul>
-                        </li>
+                        </li> -->
                         <li>
-                            <a href="#">
+                            <a href="{{ route('logout') }}">
                                 <i class="ti-share-alt"></i>
                                 <span>Logout</span>
                             </a>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 use App\Models\Service;
 use App\Models\Appointment;
 
@@ -36,7 +37,7 @@ class BookingController extends Controller
     //     return redirect()->route('home')->with('success', 'Appointment Booked!');
     // }
 
-    public function bookApppointment(Request $request)
+    public function createAppointment(Request $request)
     {
         $request->validate([
             'name' => 'required|string',
@@ -52,8 +53,18 @@ class BookingController extends Controller
 
         // Generate unique order IDs
         $orderId = 'order_'.rand(1111111111, 9999999999);
-
-    
+        // Update user in table users
+        $user = User::where('phone', $request->phone)->first();
+        // dd($user);
+        if(!empty($user)){
+            $user->increment('services_completed');
+        }else{
+            User::create([
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'services_completed' => 1,
+            ]);
+        }
         // Store payment details in database
         $payment = Appointment::create([
             'name' => $request->name,

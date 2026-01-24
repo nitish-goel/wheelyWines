@@ -271,7 +271,8 @@
                                     <input type="date" name="complete_on" class="form-control" required>
                                 </div> -->
 
-                                <button type="submit" class="theme-btn btn-style-one w-100" onclick="payNow()">
+                                <!-- <button type="submit" class="theme-btn btn-style-one w-100" onclick="payNow()"> -->
+                                <button type="submit" class="theme-btn btn-style-one w-100">
                                     Book Appointment
                                 </button>
                             </form>
@@ -290,7 +291,7 @@
     });
 </script>
 
-<script>
+<!-- <script>
 function payNow() {
     const form = document.getElementById('appointmentForm');
     fetch('/appointmentPayment', {
@@ -322,7 +323,7 @@ function payNow() {
     });
 }
 </script>
-<script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+<script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script> -->
 @endsection
 
 

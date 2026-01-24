@@ -96,7 +96,7 @@
                         <div class="panel-form">
                             <!-- <span class="ion ion-locked form-control-feedback "></span> -->
                             <div class="user-field  user-1">
-                                <input type="text" class="form-control" placeholder="Enter name" name="name" value="" />
+                                <input type="text" class="form-control" placeholder="Enter name" name="user_id" value="" />
                                 <i class="fa-solid fa-user"></i>
                             </div>
                             <div class="password-field password-1">

@@ -16,7 +16,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Route::get('/services/{id}', [ServiceController::class, 'show'])->name('service.show');
 
 Route::get('/appointment', [BookingController::class, 'index'])->name('appointment');
-Route::post('/book-appointment', [BookingController::class, 'bookApppointment'])->name('book-appointment');
+Route::post('/book-appointment', [BookingController::class, 'createAppointment'])->name('book-appointment');
 
 // cashFree Payment gateway intregation route
 // Route::post('/appointment/payments', [BookingController::class, 'payment'])->name('appointmentPayment');

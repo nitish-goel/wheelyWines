@@ -24,8 +24,9 @@ class DatabaseSeeder extends Seeder
         // ]);
         
         $this->call([
-                AppointmentSeeders::class,
-                ServiceSeeders::class
+                // AppointmentSeeders::class,
+                ServiceSeeders::class,
+                AdminSeeders::class
             ]);
 
             // User::factory()->count(5)->create();
