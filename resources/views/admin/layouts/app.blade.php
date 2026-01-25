@@ -20,6 +20,7 @@
     <link href="{{ asset('/admin/libs/icons.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
 </head>
 
+<script src="{{ asset('admin/libs/jquery.min.js') }}"></script>
 
 
 <style>
@@ -46,8 +47,135 @@
 
     }
     .text-dark {
-  color: #fff !important;
+        color: #fff !important;
+    }
+                                                                                                                                                
+    /* Toast animation */
+    /* Container */
+    #nt-toast-container {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+/* Toast box */
+.nt-toast {
+    min-width: 280px;
+    max-width: 360px;
+    border-radius: 10px;
+    font-size: 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    border-left: 5px solid;
+    opacity: 0;
+    transform: translateX(30%);
+    background: #ffffff;
+    overflow: hidden;
 }
+
+/* Top accent bar */
+.nt-toast-accent {
+    height: 4px;
+    width: 100%;
+}
+
+/* Layout */
+.nt-toast-row {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Body */
+.nt-toast-body {
+    padding: 12px 14px;
+    flex: 1;
+    font-weight: 500;
+}
+
+/* Close */
+.nt-toast-close {
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px;
+    opacity: 0.6;
+}
+
+.nt-toast-close:hover {
+    opacity: 1;
+}
+
+/* ===== TYPE STYLES ===== */
+
+/* SUCCESS */
+.nt-toast-success {
+    border-left-color: #198754;
+}
+
+.nt-toast-success .nt-toast-accent {
+    background: #198754;
+}
+
+.nt-toast-success .nt-toast-body {
+    background: #eafaf1;
+    color: #146c43;
+}
+
+/* WARNING */
+.nt-toast-warning {
+    border-left-color: #ffc107;
+}
+
+.nt-toast-warning .nt-toast-accent {
+    background: #ffc107;
+}
+
+.nt-toast-warning .nt-toast-body {
+    background: #fff4cc;
+    color: #9a6b00;
+}
+
+/* DANGER */
+.nt-toast-danger {
+    border-left-color: #dc3545;
+}
+
+.nt-toast-danger .nt-toast-accent {
+    background: #dc3545;
+}
+
+.nt-toast-danger .nt-toast-body {
+    background: #fdebec;
+    color: #b02a37;
+}
+
+/* Animations */
+.nt-toast-show {
+    animation: nt-slide-in 0.6s ease forwards,
+               nt-fade-out 0.6s ease 3.5s forwards;
+}
+
+@keyframes nt-slide-in {
+    from {
+        transform: translateX(30%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes nt-fade-out {
+    to {
+        transform: translateX(20%);
+        opacity: 0;
+    }
+}
+
 </style>
 <body data-sidebar="dark">
     <div id="layout-wrapper" class="admin__header background_layer">
@@ -89,7 +217,7 @@
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="rounded-circle header-profile-user"
-                                src="uploads/userIcon.png" alt="Header Avatar">
+                                src="#uploads/userIcon.png" alt="Header Avatar">
                             Admin
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -120,7 +248,10 @@
                 </div>
             </div>
         </header>
-        
+
+        <!-- ========== Toast helper ========== -->
+        <div id="nt-toast-container"></div>
+
          <!-- ========== Left Sidebar Start ========== -->
         <div class="vertical-menu">
             <div data-simplebar class="h-100">
@@ -140,7 +271,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#crypto" class="waves-effect">
+                            <a href="{{route('appointments')}}" class="waves-effect">
                                 <i class="ti-notepad "></i>
                                 <span>Appointments Report</span>
                             </a>
@@ -152,22 +283,22 @@
                                 <span> User Details</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{ route('allUsers') }}">All Members</a></li>                            
+                                <li><a href="{{ route('users') }}">All Members</a></li>                            
                             </ul>
                         </li>
                         
 
-                        <!-- <li>
+                       <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
                                 <i class="ti-settings "></i>
-                                <span> Settings</span>
+                                <span>Manage Services</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">                        
-                                <li><a href="#">News</a></li>                            
+                                <li><a href="{{route('services') }}">All Services</a></li>                            
                             </ul>
                         </li>
 
-                        <li>
+                        <!--  <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
                                  <i class="ti-package income_icon"></i> 
                                 <i class="fa-solid fa-pen-to-square"></i>
@@ -258,12 +389,13 @@
                 <!-- Sidebar -->
             </div>
         </div>
-           
 
+        
         <div class="main-content main_content_new dashboardcard background_layer">
             <div class="page-content">
                 <div class="container-fluid">
-                        <!-- 🧠 Main Content -->
+
+                    <!-- 🧠 Main Content -->
                         
                             {{-- Page Content --}}
                                 @yield('content')
@@ -271,6 +403,6 @@
                 </div>
             </div>
         </div>
-            @extends('Admin.layouts.footer')    
+        @extends('Admin.layouts.footer')    
            
    

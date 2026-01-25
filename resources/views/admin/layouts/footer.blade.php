@@ -15,8 +15,8 @@
                 </div>
             </div>
 
-
-                </div>
+           
+    </div>
             <!-- end main content-->
 
 <!-- END layout-wrapper -->
@@ -25,7 +25,43 @@
 
 
 </body>
+<script>
+function showToast(message, type = "success") {
+    const toastId = "nt-toast-" + Date.now();
 
+    const typeClass = {
+        success: "nt-toast-success",
+        warning: "nt-toast-warning",
+        danger: "nt-toast-danger"
+    }[type];
+
+    const toastHTML = `
+        <div id="${toastId}" class="nt-toast ${typeClass}">
+            <div class="nt-toast-accent"></div>
+            <div class="nt-toast-row">
+                <div class="nt-toast-body">${message}</div>
+                <button class="nt-toast-close" onclick="removeNtToast('${toastId}')">&times;</button>
+            </div>
+        </div>
+    `;
+
+    const container = document.getElementById("nt-toast-container");
+    container.insertAdjacentHTML("beforeend", toastHTML);
+
+    const toastEl = document.getElementById(toastId);
+    requestAnimationFrame(() => toastEl.classList.add("nt-toast-show"));
+
+    setTimeout(() => removeNtToast(toastId), 3200);
+}
+
+function removeNtToast(id) {
+    const el = document.getElementById(id);
+    if (el) el.remove();
+    location.reload();
+}
+
+
+</script>
 
 <!-- JAVASCRIPT -->
 <!-- jQuery FIRST -->
@@ -37,26 +73,11 @@
 <!-- Plugins -->
 <script src="{{ asset('admin/libs/metisMenu.min.js') }}"></script>
 <script src="{{ asset('admin/libs/simplebar.min.js') }}"></script>
-<script src="{{ asset('admin/libs/node-waves/waves.min.js') }}"></script>
+<script src="{{ asset('admin/libs/waves.min.js') }}"></script>
 
 <!-- App JS (LAST) -->
 <script src="{{ asset('admin/js/app.js') }}"></script>
 
-<!-- <script src="NewDashboard/assets/libs/jquery/jquery.min.js"></script>
-<script src="NewDashboard/assets/libs/metismenu/metisMenu.min.js"></script>
-<script src="NewDashboard/assets/libs/simplebar/simplebar.min.js"></script>
-<script src="NewDashboard/assets/libs/node-waves/waves.min.js"></script> -->
-
-<!-- Peity chart-->
-<!-- <script src="NewDashboard/assets/libs/peity/jquery.peity.min.js"></script> -->
-
-<!-- Plugin Js-->
-<!-- <script src="NewDashboard/assets/libs/chartist/chartist.min.js"></script>
-<script src="NewDashboard/assets/libs/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js"></script>
-
-<script src="NewDashboard/assets/js/pages/dashboard.init.js"></script>
-
-<script src="NewDashboard/assets/js/app.js"></script> -->
 <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>

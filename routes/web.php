@@ -39,8 +39,16 @@ Route::view('/login','admin.login')->name('login');
 Route::post('management/login', [ManagementController::class, 'login'])->name('adminLogin');
 Route::get('admin/logout', [ManagementController::class, 'logout'])->name('logout')->middleware('auth:admin');
 
+// Dashboard
 Route::get('/admin/dashboard', [ManagementController::class, 'index'])->name('dashboard')->middleware('auth:admin');
+
+// Services
+Route::get('/admin/services', [ManagementController::class, 'services'])->name('services')->middleware('auth:admin');
+Route::post('/admin/service-update', [ManagementController::class, 'updateServiceStatus'])->name('service.update')->middleware('auth:admin');
+
+
 // Reports
-Route::get('/admin/allUsers', [ManagementController::class, 'users'])->name('allUsers')->middleware('auth:admin');
+Route::get('/admin/users', [ManagementController::class, 'users'])->name('users')->middleware('auth:admin');
+Route::get('/admin/appointments', [ManagementController::class, 'appointments'])->name('appointments')->middleware('auth:admin');
 // Route::get('/management', [ManagementController::class, 'showServices']);
 

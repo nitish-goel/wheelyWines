@@ -157,7 +157,7 @@
             <header class="main-header header-style-three">
 
                 <!-- Header Top -->
-                <!-- <div class="header-top">
+                <div class="header-top">
                     <div class="auto-container">
                         <div class="inner-container">
                             <div class="left-column">
@@ -168,20 +168,24 @@
                                         style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span
                                             id="hs_cos_wrapper_topbar_text_"
                                             class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_text"
-                                            style="" data-hs-cos-general-type="widget" data-hs-cos-type="text">Some
-                                            additional information in one line</span></div>
+                                            style="" data-hs-cos-general-type="widget" data-hs-cos-type="text">Schedule Your Appontment Today :</span></div>
                                 </div>
                             </div>
                             <div class="right-column">
                                 <div class="phone-number">
                                     <div id="hs_cos_wrapper_topbar_text2"
                                         class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-rich_text"
-                                        style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span
+                                        style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+                                        <span
                                             id="hs_cos_wrapper_topbar_text2_"
                                             class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text"
                                             style="" data-hs-cos-general-type="widget"
-                                            data-hs-cos-type="rich_text">Schedule Your Appontment Today : <strong>1800
-                                                456 7890</strong></span></div>
+                                            data-hs-cos-type="rich_text">
+                                            <!-- <strong>1800456 7890</strong> -->
+                                            <a href="{{ route('appointment') }}"
+                                                                                class="theme-btn btn-style-one"><span>Book a Schedule <i
+                                                                                        class="flaticon-right"></i></span></a>
+                                        </span></div>
                                 </div>
                                 <div class="language-switcher">
 
@@ -189,7 +193,7 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
 
                 <!-- Header Upper -->
                 <div class="header-upper style-three">
@@ -396,9 +400,8 @@
                                                                             in our level of service that we back it up
                                                                             <br> with a good quality</div>
                                                                         <div class="link-box">
-                                                                            <a href="#services"
-                                                                                class="theme-btn btn-style-one"><span>view
-                                                                                    all services <i
+                                                                            <a href="{{ route('appointment') }}"
+                                                                                class="theme-btn btn-style-one"><span>Book a Schedule <i
                                                                                         class="flaticon-right"></i></span></a>
                                                                         </div>
                                                                     </div>
@@ -757,7 +760,7 @@
                                                     <h2>We are leader <br> in Car Mechanical Work</h2>
                                                     <div class="video-box">
                                                         <div class="video-btn"><a
-                                                                href="{type=EXTERNAL,%20content_id=null,%20href=https://www.youtube.com/watch?v=nfP5N9Yc72A&t=28s,%20href_with_scheme=https://www.youtube.com/watch?v=nfP5N9Yc72A&t=28s}"
+                                                                href="#" 
                                                                 class="overlay-link lightbox-image video-fancybox ripple"><i
                                                                     class="fa fa-play"></i></a></div>
                                                         <div class="text">Watch intro video <br> about us</div>
@@ -960,7 +963,8 @@
                                                                 <div class="content">
                                                                     <h2>Car Repair Estimator</h2>
                                                                     <div class="text">Get a estimate according your car
-                                                                        condition</div>
+                                                                        condition now:  <strong>+19707840311</strong></div>
+                                                                        
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-6">

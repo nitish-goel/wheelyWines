@@ -1,7 +1,5 @@
 @extends('Admin.layouts.app')
 
-
-
 @section('content')
 <style>
     .card-text-padding {
@@ -29,12 +27,12 @@
     <div class="col-md-12 ">
         <div class="new__sec sec-new-card upper_section_home">
             <div class="sub__header for-none mb-2">
-                <h5 class="m-0 text-white starte__txt">Starter Page</h5>
-                <h5 class="mb-0 text-success"> Process</h5>
+                <!-- <h5 class="m-0 text-white starte__txt">Starter Page</h5> -->
+                <!-- <h5 class="mb-0 text-success"> Process</h5> -->
             </div>
             <div class="sub__header set-cash-card ">
-                <h5 class="m-0 text-white none-text text-card-set">SMS Left: 423 limit - 500</h5>
-                <a href="#" class="btn">Withdraw Refresh</a>
+                <h5 class="m-0 text-white none-text text-card-set">Appointment : {{$total_Appointment}}</h5>
+                <a href="{{route('appointments')}}" class="btn">Appointments</a>
             </div>
         </div>
 
@@ -53,16 +51,120 @@
                                     </div>
                                     <div class="card-text-padding">
                                         <a href="#" class="stretched-link">
-                                            <h5 class="font-size-16 text-uppercase m-0">Total Payout</h5>
+                                            <h5 class="font-size-16 text-uppercase m-0">Total Users</h5>
                                         </a>
                                     
-                                        <h5 class="font-weight-medium mb-0 mt-1">Total : $ 55 </h5>
+                                        <h5 class="font-weight-medium mb-0 mt-1">Total : {{$users}} </h5>
                                     </div>
                                 </div>
                             </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="back_layer">
+                            <div class="new-set-card">
+                                <div class="card inner">
+                                    <div class="card-body p-0">
+                                        <div class="mini-stat-img ">
+                                            <!-- <i class="fas fa-dollar-sign" aria-hidden="true"></i> -->
+                                            <!-- <img src="../../../uploads/icon224.png"> -->
+                                        </div>
+                                        <div class="card-text-padding">
+                                            <a href="$" class="stretched-link">
+                                                <h5 class="font-size-16 text-uppercase m-0">Today Joined Users</h5>
+                                            </a>
+                                            <h5 class="font-weight-medium mb-0 mt-1">Total : {{$today_joined_users}} </span></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="back_layer">
+                            <div class="new-set-card">
+                                <div class="card inner">
+                                    <div class="card-body p-0">
+                                        <div class=" mini-stat-img ">
+                                            <!-- <i class="fas fa-dollar-sign" aria-hidden="true"></i> -->
+                                            <!-- <img src="../../../uploads/dashboard_color1.png"> -->
+                                        </div>
+                                        <div class="card-text-padding">
+                                            <a href="#" class="stretched-link">
+                                                <h5 class="font-size-16 text-uppercase m-0 ">Total Appointment</h5>
+                                            </a>
+                                            <h5 class="font-weight-medium mb-0 mt-1">{{$total_Appointment }}</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="back_layer">
+                            <div class="new-set-card">
+                                <div class="card inner">
+                                    <div class="card-body p-0">
+                                        <div class=" mini-stat-img ">
+                                            <!-- <i class="fas fa-dollar-sign" aria-hidden="true"></i> -->
+                                            <!-- <img src="../../../uploads/dashboard_color1.png"> -->
+                                        </div>
+                                        <div class="card-text-padding">
+                                            <a href="#" class="stretched-link">
+                                                <h5 class="font-size-16 text-uppercase m-0 ">Today Appointment</h5>
+                                            </a>
+                                            <h5 class="font-weight-medium mb-0 mt-1">{{$today_Appointment }}</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="back_layer">
+                            <div class="new-set-card">
+                                <div class="card inner">
+                                    <div class="card-body p-0">
+                                        <div class=" mini-stat-img ">
+                                            <!-- <i class="fas fa-dollar-sign" aria-hidden="true"></i> -->
+                                            <!-- <img src="../../../uploads/dashboard_color1.png"> -->
+                                        </div>
+                                        <div class="card-text-padding">
+                                            <a href="#" class="stretched-link">
+                                                <h5 class="font-size-16 text-uppercase m-0 ">Total Payment</h5>
+                                            </a>
+                                            <h5 class="font-weight-medium mb-0 mt-1">₹{{$total_appointment_payment }}</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="back_layer">
+                            <div class="new-set-card">
+                                <div class="card inner">
+                                    <div class="card-body p-0">
+                                        <div class=" mini-stat-img ">
+                                            <!-- <i class="fas fa-dollar-sign" aria-hidden="true"></i> -->
+                                            <!-- <img src="../../../uploads/dashboard_color1.png"> -->
+                                        </div>
+                                        <div class="card-text-padding">
+                                            <a href="#" class="stretched-link">
+                                                <h5 class="font-size-16 text-uppercase m-0 ">Today Payment</h5>
+                                            </a>
+                                            <h5 class="font-weight-medium mb-0 mt-1">₹{{$today_appointment_payment }}</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+
 </div>
                 
 @endsection
