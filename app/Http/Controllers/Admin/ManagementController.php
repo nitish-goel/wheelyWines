@@ -165,6 +165,16 @@ class ManagementController extends Controller
                     <i class="bi '.$btnIcon.'"></i> '.$btnText.'
                 </button>
             ';
+            $deleteBtn = '
+                <button 
+                    type="button"
+                    class="deleteBtn btn btn-sm btn-outline-danger"
+                    data-id="'.$rec->id.'"
+                    title="Click to delete"
+                >
+                    <i class="bi bi-trash"></i> Delete
+                </button>
+            ';
     
             $tbody[] = '
                 <tr>
@@ -172,7 +182,7 @@ class ManagementController extends Controller
                     <td>'.$rec->name.'</td>
                     <td>'.$statusBadge.'</td>
                     <td>'.$rec->created_at.'</td>
-                    <td>'.$statusBtn.'</td>
+                    <td>'.$statusBtn .'|'.$deleteBtn.'</td>
                 </tr>
             ';
         }
@@ -211,6 +221,32 @@ class ManagementController extends Controller
                         // alert("Something went wrong!");
                         showToast("Something went wrong!", "danger");
 
+                    }
+                });
+            });
+            $(document).on("click", ".deleteBtn", function () {
+    
+                if(!confirm("Are you sure for this action?")) return;
+    
+                let btn  = $(this);
+                let id   = btn.data("id");
+    
+                $.ajax({
+                    url: "'.route('service.delete').'",
+                    type: "POST",
+                    data: {
+                        _token: "'.csrf_token().'",
+                        id: id,
+                    },
+                    success: function (response) {
+                        if (response.success) {                           
+                            showToast(response.message, "success");
+                        } else {
+                            showToast(response.message, "warning");
+                        }
+                    },
+                    error: function () {
+                        showToast("Something went wrong!", "danger");
                     }
                 });
             });
@@ -260,6 +296,28 @@ class ManagementController extends Controller
             'success' => true,
             'message' => 'Status Updated Successfully',
             'status'  => $newStatus
+        ]);
+    }
+    public function deleteService(Request $request)
+    {
+        $request->validate([
+            'id'   => 'required|integer|exists:services,id',
+        ]);
+        
+        $service = Service::find($request->id);
+        
+        if (!$service) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Service Not Found!'
+            ]);
+        }     
+        // dd($service);           
+    
+        $service->delete();    
+        return response()->json([
+            'success' => true,
+            'message' => 'Service Deleted Successfully',
         ]);
     }
     
