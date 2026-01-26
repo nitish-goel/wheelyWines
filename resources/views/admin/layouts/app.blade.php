@@ -34,7 +34,7 @@
         color: #fff;
     }
 
-    .breadcrumb-item>a {
+    .breadcrumb-item > a {
         color: #fff;
     }
 
@@ -294,6 +294,7 @@
                                 <span>Manage Services</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">                        
+                                <li><a href="{{route('service.add') }}">Add Service</a></li>                            
                                 <li><a href="{{route('services') }}">All Services</a></li>                            
                             </ul>
                         </li>

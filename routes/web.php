@@ -44,6 +44,9 @@ Route::get('/admin/dashboard', [ManagementController::class, 'index'])->name('da
 
 // Services
 Route::get('/admin/services', [ManagementController::class, 'services'])->name('services')->middleware('auth:admin');
+Route::view('admin/add-service','admin.form')->name('service.add')->middleware('auth:admin');
+Route::post('addservice', [ManagementController::class, 'addService'])->name('addService')->middleware('auth:admin');
+
 Route::post('/admin/service-update', [ManagementController::class, 'updateServiceStatus'])->name('service.update')->middleware('auth:admin');
 Route::post('/admin/service-delete', [ManagementController::class, 'deleteService'])->name('service.delete')->middleware('auth:admin');
 

@@ -123,7 +123,7 @@ class ManagementController extends Controller
 
     public function services()
     {
-        $records = Service::paginate(5);
+        $records = Service::paginate(10);
     
         $response['users'] = $records;
     
@@ -298,6 +298,28 @@ class ManagementController extends Controller
             'status'  => $newStatus
         ]);
     }
+    public function addService(Request $request)
+    {
+        $request->validate([
+            'service_name'  => 'required|string',
+        ]);
+        // Check if service already exists
+        $service = Service::where('name', $request->service_name)->first();
+        // dd($service);
+    
+        if ($service) {            
+            return redirect()->back()->withErrors(['error'=>'Service already exists!']);
+
+        }
+    
+        // Create service
+        Service::create([
+            'name'  => $request->service_name,
+        ]);
+    
+        return redirect()->back()->with('success', 'Service added successfully!');
+    }
+    
     public function deleteService(Request $request)
     {
         $request->validate([
