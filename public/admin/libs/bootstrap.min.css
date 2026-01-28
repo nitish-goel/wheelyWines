@@ -2685,7 +2685,7 @@
   }
   .btn-primary {
     color: #fff;
-    background-color: #626ed4;
+    background-color: #626ed4 !important;
     border-color: #626ed4;
   }
   .btn-primary:hover {

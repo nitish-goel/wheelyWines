@@ -32,7 +32,7 @@
             </div>
             <div class="sub__header set-cash-card ">
                 <h5 class="m-0 text-white none-text text-card-set">Appointment : {{$total_Appointment}}</h5>
-                <a href="{{route('appointments')}}" class="btn">Appointments</a>
+                <a href="{{route('appointments')}}" class="btn btn-primary">Appointments</a>
             </div>
         </div>
 

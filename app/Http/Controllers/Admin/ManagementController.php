@@ -278,6 +278,7 @@ class ManagementController extends Controller
         
         // Determine new status
         $newStatus = ($request->flag === "on") ? 0 : 1;
+        $newStatusUpdated = ($request->flag === "on") ? 'Activated' : 'Deactivated';
     
         // Already same status
         if ($service->status == $newStatus) {
@@ -294,7 +295,7 @@ class ManagementController extends Controller
     
         return response()->json([
             'success' => true,
-            'message' => 'Status Updated Successfully',
+            'message' => $newStatusUpdated .' Successfully',
             'status'  => $newStatus
         ]);
     }
