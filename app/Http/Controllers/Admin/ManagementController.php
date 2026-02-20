@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Appointment;
 use App\Models\Service;
+use App\Models\Admin;
 
 
 class ManagementController extends Controller
@@ -75,6 +76,62 @@ class ManagementController extends Controller
         $response['tbody'] = $tbody;
         $response['header'] = 'All-Users Report';
         return view('admin.reports', $response);
+    }
+
+    public function qr_code()
+    {
+        $response = [];
+        $admin = Admin::first();
+
+        $response['qr_image'] =  ((!empty($admin->payment_QR))?$admin->payment_QR:null);
+
+        return view('admin.payment_form',$response);
+    }
+    
+    public function update_QR(Request $request)
+    {
+        $request->validate([
+            'qr_image' => 'required|image|mimes:jpg,jpeg,png|max:2048'
+        ]);
+
+        // Get first admin record (assuming single admin)
+        $admin = Admin::first();
+        // dd($admin);
+
+        if (!$admin) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Admin record not found'
+            ]);
+        }
+
+        // Store new QR image
+        $imageName = 'QR_image'.time() . '.' . $request->qr_image->extension();
+        $request->qr_image->move(public_path('uploads/qr'), $imageName);
+        // print_r($imageName);
+
+        // Check if already same image
+        if ($admin->payment_QR == $imageName) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Already Updated!!!'
+            ]);
+        }
+
+        // Delete old image (optional but recommended)
+        if ($admin->payment_QR && file_exists(public_path('uploads/qr/' . $admin->payment_QR))) {
+            unlink(public_path('uploads/qr/' . $admin->payment_QR));
+        }
+
+        // Update database
+        $admin->update([
+            'payment_QR' => $imageName
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'QR Updated Successfully'
+        ]);
     }
 
     public function logout()

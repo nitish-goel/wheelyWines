@@ -290,7 +290,7 @@
 
                        <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                <i class="ti-settings "></i>
+                            <i class="ti-package"></i>
                                 <span>Manage Services</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">                        
@@ -308,21 +308,22 @@
                             <ul class="sub-menu" aria-expanded="false">                               
                                 <li><a href="#">Income Ledgar</a></li>                            
                             </ul>
-                        </li>
+                             </li> -->
                           
 
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                <i class="ti-package"></i>
-                                <span>Notifications</span>
+                                <i class="ti-settings "></i>
+                                <span>Settings</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="#">News</a></li>
+                                <li><a href="{{ route('add.qr') }}">Payment QR-Code</a></li>
 
                             </ul>
                         </li>
 
-                        <li>
+                        <!-- <li> 
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
                                 <i class="ti-id-badge"></i>
                                 <span>Rewards</span>

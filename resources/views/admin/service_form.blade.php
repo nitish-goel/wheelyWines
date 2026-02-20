@@ -8,10 +8,10 @@
             <div class="row m-0 mb-4 mt-1 new__sec">
                 <div class="col-12">
                     <section class="sub__header">
-                        <h5 class="m-0 text-dark starte__txt">Update Fund Request</h5>
+                        <h5 class="m-0 text-dark starte__txt">Services </h5>
                         <ol class="breadcrumb float-sm-right mb-0">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Update Fund Request</li>
+                            <li class="breadcrumb-item active">Add Services </li>
                         </ol>
                     </section>
                 </div><!-- /.col -->

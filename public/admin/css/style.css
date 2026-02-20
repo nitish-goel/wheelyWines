@@ -379,7 +379,7 @@
   }
   
   .dashboardcard .card .card-body {
-    padding: 0 10px !important;
+    padding: 10px 10px !important;
     position: relative;
     /* height: 130px; */
     flex-direction: row-reverse !important;

@@ -15,12 +15,15 @@ Route::get('/admin/dashboard', [ManagementController::class, 'index'])->name('da
 
 // Services
 Route::get('/admin/services', [ServiceController::class, 'services'])->name('services')->middleware('auth:admin');
-Route::view('admin/add-service','admin.form')->name('service.add')->middleware('auth:admin');
+Route::view('admin/add-service','admin.service_form')->name('service.add')->middleware('auth:admin');
 Route::post('addservice', [ServiceController::class, 'addService'])->name('addService')->middleware('auth:admin');
 
 Route::post('/admin/service-update', [ServiceController::class, 'updateServiceStatus'])->name('service.update')->middleware('auth:admin');
 Route::post('/admin/service-delete', [ServiceController::class, 'deleteService'])->name('service.delete')->middleware('auth:admin');
 
+// Payment 
+Route::get('admin/add-qr',[ManagementController::class, 'qr_code'])->name('add.qr')->middleware('auth:admin');
+Route::post('/admin-qr', [ManagementController::class, 'update_QR'])->name('addQR')->middleware('auth:admin');
 
 // Reports
 Route::get('/admin/users', [ManagementController::class, 'users'])->name('users')->middleware('auth:admin');
