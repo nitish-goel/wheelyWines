@@ -147,6 +147,40 @@
     }
 }
 
+
+/* ===== Titles ===== */
+.qr-title {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #000;
+    letter-spacing: 0.5px;
+}
+
+/* ===== Upload Box ===== */
+.qr-image-box {
+    border: 2px dashed #EE0D09;
+    border-radius: 14px;
+    padding: 25px;
+    text-align: center;
+    background: #EE0D09;
+    transition: 0.3s ease;
+}
+
+.qr-image-box:hover {
+    /* background: rgba(255,255,255,0.15); */
+    background: #E9ECEF;
+}
+
+.qr-image-box img {
+    max-width: 180px;
+    border-radius: 12px;
+    transition: 0.3s ease;
+}
+
+.qr-image-box img:hover {
+    transform: scale(1.08);
+}
 </style>
 
 
@@ -186,7 +220,7 @@
 
                         @if (session('error'))
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong>Error!</strong> {{ session('error') }}
+                                <strong>Fail!</strong> {{ session('error') }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                     aria-label="Close"></button>
                             </div>
@@ -220,23 +254,23 @@
                                 @csrf
                                 <div class="form-group">
                                     <label>Full Name</label>
-                                    <input type="text" name="name" class="form-control" required>
+                                    <input type="text" name="name" class="form-control" placeholder="name" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Phone Number</label>
-                                    <input type="phone" name="phone" class="form-control" required>
+                                    <input type="phone" name="phone" class="form-control" placeholder="number" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Vehicle Company</label>
-                                    <input type="text" name="car_company" class="form-control" required>
+                                    <input type="text" name="car_company" class="form-control" placeholder="company" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Vehicle Name</label>
-                                    <input type="text" name="car_name" class="form-control" required>
+                                    <input type="text" name="car_name" class="form-control" placeholder="name" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Vehicle Model</label>
-                                    <input type="month" name="car_model" class="form-control" required>
+                                    <input type="month" name="car_model" class="form-control" placeholder="model" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Select Service</label>
@@ -264,12 +298,22 @@
                                         <!-- <a href="http://car_services.test" class="theme-btn btn-style-one pay-btn">
                                             Pay Now
                                         </a> -->
-                                    </div>
+                                       
+                                    </div>                                    
                                 </div>
-                                <!-- <div class="form-group">
-                                    <label>Preferred Date</label>
-                                    <input type="date" name="complete_on" class="form-control" required>
-                                </div> -->
+                                @if(!empty($QR))
+                                        <div class="form-group mb-4">
+                                        <label>Scan QR-Code for Payment :-</label>
+
+                                            <div class="qr-image-box">
+                                                <img src="{{ asset('uploads/qr/'.$QR) }}" alt="QR Code">
+                                            </div>
+                                        </div>
+                                         @endif
+                                <div class="form-group">
+                                    <label>Transaction ID</label>
+                                    <input type="number" name="transaction_id" class="form-control" placeholder="transaction id" required>
+                                </div>
 
                                 <!-- <button type="submit" class="theme-btn btn-style-one w-100" onclick="payNow()"> -->
                                 <button type="submit" class="theme-btn btn-style-one w-100">
