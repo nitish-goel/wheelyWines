@@ -299,16 +299,18 @@
                             </ul>
                         </li>
 
-                        <!--  <li>
+                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                 <i class="ti-package income_icon"></i> 
+                                 <!-- <i class="ti-package income_icon"></i>  -->
                                 <i class="fa-solid fa-pen-to-square"></i>
-                                <span> Income Reports</span>
+                                <span> Appointments Reports</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">                               
-                                <li><a href="#">Income Ledgar</a></li>                            
+                                <li><a href="{{route('appointments')}}">Pending Appointments</a></li>                            
+                                <li><a href="{{route('approve.appointments')}}">Approved Appointments</a></li>                            
+                                <li><a href="{{route('decline.appointments')}}">Declined Appointments</a></li>                            
                             </ul>
-                             </li> -->
+                             </li>
                           
 
                         <li>

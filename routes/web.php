@@ -27,6 +27,10 @@ Route::post('/admin-qr', [ManagementController::class, 'update_QR'])->name('addQ
 
 // Reports
 Route::get('/admin/users', [ManagementController::class, 'users'])->name('users')->middleware('auth:admin');
-Route::get('/admin/appointments', [AppointmentController::class, 'appointments'])->name('appointments')->middleware('auth:admin');
+Route::get('/admin/appointments/{status?}', [AppointmentController::class, 'appointments'])->name('appointments')->middleware('auth:admin');
+Route::get('/admin/appointments/1', [AppointmentController::class, 'appointments'])->name('approve.appointments')->middleware('auth:admin');
+Route::get('/admin/appointments/2', [AppointmentController::class, 'appointments'])->name('decline.appointments')->middleware('auth:admin');
+
+Route::post('/admin/appointment-update', [AppointmentController::class, 'updateStatus'])->name('updateAppointment')->middleware('auth:admin');
 // Route::get('/management', [ManagementController::class, 'showServices']);
 

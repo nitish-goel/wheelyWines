@@ -56,7 +56,7 @@ class ManagementController extends Controller
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Phone</th>
-                                <th>Services</th>
+                                <th>Total Service</th>
                                 <th>Last Service</th>
                                 <th>Joining Date</th>
                                 </tr>';
@@ -67,7 +67,7 @@ class ManagementController extends Controller
                                 <td>' .$rec->id .'</td>
                                 <td>' .$rec->name .'</td>
                                 <td>' .$rec->phone .'</td>
-                                <td>' .$rec->services_completed .'</td>
+                                <td>' .$rec->total_service .'</td>
                                 <td>' .$rec->updated_at->format('Y-m-d') .'</td>
                                 <td>' .$rec->created_at .'</td>
                             </tr>';

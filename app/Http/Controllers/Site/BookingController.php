@@ -14,12 +14,17 @@ class BookingController extends Controller
 
     public function index()
     {
-        $services = DB::table('services')->where('status','=',0)->get();
+        $response=[];
+
+        $response['services'] = DB::table('services')->where('status','=',0)->get();
+        $QR_image = DB::table('admins')->first();
+
+        $response['QR'] = ((!empty($QR_image->payment_QR))?$QR_image->payment_QR:null);
         // echo '<pre>';
         // print_r($services);
         // echo ' </pre>';
         // die;
-        return view('Site.booking.index', compact('services'));
+        return view('Site.booking.index', $response);
     }
     // public function store(Request $request)
     // {
@@ -49,40 +54,52 @@ class BookingController extends Controller
             'service_id' => 'required|numeric',
             'service_name' => 'required|string',
             'amount' => 'required|numeric|min:1|max:500',
+            'transaction_id' => 'required|numeric',
         ]);
 
         // Generate unique order IDs
         $orderId = 'order_'.rand(1111111111, 9999999999);
         // Update user in table users
-        $user = User::where('phone', $request->phone)->first();
-        // dd($user);
-        if(!empty($user)){
-            $user->increment('services_completed');
-        }else{
-            User::create([
+        $userPhone = User::where('phone', $request->phone)->first();
+        // $userName = User::where('name', $request->name)->first();
+        $trx_Exists = Appointment::where('transaction_id', $request->transaction_id)->first();
+        // dd($userPhone->name);
+        if(empty($trx_Exists)){
+            if(!empty($userPhone)) {
+                if($request->name == $userPhone->name){
+                    $userPhone->increment('total_service');
+                }else{
+                    return redirect()->route('appointment')->with('error', 'Phone Number Already exists!!!');
+                }
+            }else{
+                User::create([
+                    'name' => $request->name,
+                    'phone' => $request->phone,
+                    'total_service' => 1,
+                ]);
+            }
+            // Store payment details in database
+            $payment = Appointment::create([
                 'name' => $request->name,
+                // 'email' => $request->email,
                 'phone' => $request->phone,
-                'services_completed' => 1,
+                'car_company' => $request->car_company,
+                'car_name' => $request->car_name,
+                'car_model' => $request->car_model,
+                'service_id' => $request->service_id,
+                'service_name' => $request->service_name,
+                'amount' => $request->amount,
+                'order_id' => $orderId,
+                'status' => 0, // pending
+                'transaction_id' => $request->transaction_id // pending
             ]);
-        }
-        // Store payment details in database
-        $payment = Appointment::create([
-            'name' => $request->name,
-            // 'email' => $request->email,
-            'phone' => $request->phone,
-            'car_company' => $request->car_company,
-            'car_name' => $request->car_name,
-            'car_model' => $request->car_model,
-            'service_id' => $request->service_id,
-            'service_name' => $request->service_name,
-            'amount' => $request->amount,
-            'order_id' => $orderId,
-            'status' => 0 // pending
-        ]);
-        if ($payment) {
-            return redirect()->route('appointment')->with('success', 'Appointment Booked');
-        } else {
-            return redirect()->route('appointment')->with('error', 'Appointment Failed!');
+            if ($payment) {
+                return redirect()->route('appointment')->with('success', 'Appointment Booked');
+            } else {
+                return redirect()->route('appointment')->with('error', 'Appointment Failed!');
+            }
+        }else{
+            return redirect()->route('appointment')->with('error', 'Transaction ID Already exists!!!');
         }
         
     }
