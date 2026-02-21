@@ -14,7 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'WheelyWines'),
-    'logo' => env('APP_LOGO', 'site/images/thumbnail_2.png'),
+    'logo' => env('APP_LOGO', '/thumbnail_2.png'),
 
     /*
     |--------------------------------------------------------------------------

@@ -191,7 +191,7 @@
                             class="logo logo-light d-block Logo_newLInk">
                             <div class="logo__sec">
 
-                                <img class="forex-img" src="../{{$logo}}" alt="logo">
+                                <img class="forex-img" src="{{$logo}}" alt="logo">
 
                             </div>
                         </a>
