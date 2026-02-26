@@ -24,7 +24,7 @@ class BookingController extends Controller
         // print_r($services);
         // echo ' </pre>';
         // die;
-        return view('Site.booking.index', $response);
+        return view('site.booking.index', $response);
     }
     // public function store(Request $request)
     // {
