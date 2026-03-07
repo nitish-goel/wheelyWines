@@ -293,7 +293,7 @@
                                                 style="" data-hs-cos-general-type="widget" data-hs-cos-type="logo"><a
                                                     href="{{$url}}"
                                                     id="hs-link-sticky_logo_hs_logo_widget"
-                                                    style="border-width:0px;border:0px;"><img src="{{asset('/site/images/thumbnail_2.png')}}"
+                                                    style="border-width:0px;border:0px;"><img src="{{asset('/thumbnail_2.png')}}"
                                                         class="hs-image-widget " height="43"
                                                         style="height: auto;width:45px;border-width:0px;border:0px;"
                                                         width="45" alt="logo-2" title="logo-2"
@@ -1219,7 +1219,7 @@
                                                         href="{{$url}}"
                                                         id="hs-link-future_logo_hs_logo_widget"
                                                         style="border-width:0px;border:0px;"><img
-                                                            src="{{asset('/site/images/thumbnail_2.png')}}" class="hs-image-widget "
+                                                            src="{{asset('/thumbnail_2.png')}}" class="hs-image-widget "
                                                             height="50"
                                                             style="height: auto;width:80px;border-width:0px;border:0px;"
                                                             width="180" alt="Company logo" title="Company logo"
