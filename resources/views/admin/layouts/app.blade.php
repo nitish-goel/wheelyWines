@@ -407,6 +407,6 @@
                 </div>
             </div>
         </div>
-        @extends('Admin.layouts.footer')    
+        @extends('admin.layouts.footer')    
            
    
