@@ -236,7 +236,7 @@
                                                     href="{{$url}}"
                                                     id="hs-link-future_logo_hs_logo_widget"
                                                     style="border-width:0px;border:0px;"><img
-                                                        src="{{asset('/site/images/thumbnail_2.png')}}" class="hs-image-widget "
+                                                        src="{{asset('/thumbnail_2.png')}}" class="hs-image-widget "
                                                         height="50"
                                                         style="height: auto;width:80px;border-width:0px;border:0px;"
                                                         width="180" alt="Company logo" title="Company logo"
