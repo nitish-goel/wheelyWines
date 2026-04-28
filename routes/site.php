@@ -21,4 +21,6 @@ Route::post('/book-appointment', [BookingController::class, 'createAppointment']
 // cashFree Payment gateway intregation route
 // Route::post('/appointment/payments', [BookingController::class, 'payment'])->name('appointmentPayment');
 // Route::any('/appointment/success', [BookingController::class, 'success'])->name('paymentSuccess');
+Route::post('/payment', [BookingController::class, 'payment'])->name('payment');
+Route::get('/payment-success', [BookingController::class, 'success'])->name('paymentSuccess');
 

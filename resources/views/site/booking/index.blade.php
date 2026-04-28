@@ -250,7 +250,7 @@
                         @if($services->isEmpty())
                             <p class="text-center">No services available.</p>
                         @else
-                            <form method="POST" action="{{ route('book-appointment') }}" class="booking-form" id="appointmentForm">
+                            <form method="POST" action="{{ route('payment') }}" class="booking-form" id="appointmentForm">
                                 @csrf
                                 <div class="form-group">
                                     <label>Full Name</label>
@@ -301,19 +301,19 @@
                                        
                                     </div>                                    
                                 </div>
-                                @if(!empty($QR))
+                                <!-- @if(!empty($QR))
                                         <div class="form-group mb-4">
-                                        <label>Scan QR-Code for Payment :-</label>
+                                            <label>Scan QR-Code for Payment :-</label>
 
                                             <div class="qr-image-box">
                                                 <img src="{{ asset('uploads/qr/'.$QR) }}" alt="QR Code">
                                             </div>
                                         </div>
-                                         @endif
-                                <div class="form-group">
+                                         @endif -->
+                                <!-- <div class="form-group">
                                     <label>Transaction ID</label>
                                     <input type="number" name="transaction_id" class="form-control" placeholder="transaction id" required>
-                                </div>
+                                </div> -->
 
                                 <!-- <button type="submit" class="theme-btn btn-style-one w-100" onclick="payNow()"> -->
                                 <button type="submit" class="theme-btn btn-style-one w-100">

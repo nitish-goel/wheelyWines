@@ -15,8 +15,10 @@ class AppointmentController extends Controller
     {   
         $response = [];
         $checkStatus = 0;
+        $header ='Pending Appointments';
         if(in_array($getStatus,[1,2])){
             $checkStatus = $getStatus;
+            $header = ($getStatus == 1)? 'Approved Appointments':'Declined Appointments';
         }
         $records = Appointment::where('status', $checkStatus)->orderBy('id','desc')->paginate(10);
 
@@ -115,7 +117,7 @@ class AppointmentController extends Controller
         </script>
         ';
         $response['tbody'] = $tbody;
-        $response['header'] = 'Appointments Report';
+        $response['header'] = $header;
         return view('admin.reports', $response);
     }
 
