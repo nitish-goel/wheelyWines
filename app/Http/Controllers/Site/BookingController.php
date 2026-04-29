@@ -332,7 +332,7 @@ class BookingController extends Controller
                 "return_url" => route('paymentSuccess') . "?order_id={order_id}"
             ]
         ]);
-        dd($response->json());
+        print_r($response->json());
         $data = $response->json();
 
         if (!$response->successful()) {
