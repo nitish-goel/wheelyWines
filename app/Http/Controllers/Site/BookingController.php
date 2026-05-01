@@ -308,7 +308,7 @@ class BookingController extends Controller
         ]);
 
         $orderId = 'order_' . time();
-        $customerId = 'cust_' . time();
+        $customerId = $request->name . '_' . time();
 
         $url = env('CASHFREE_ENV') === 'sandbox'
             ? "https://sandbox.cashfree.com/pg/orders"
@@ -332,7 +332,7 @@ class BookingController extends Controller
                 "return_url" => route('paymentSuccess') . "?order_id={order_id}"
             ]
         ]);
-        print_r($response->json());
+        // print_r($response->json());
         $data = $response->json();
 
         if (!$response->successful()) {
@@ -374,21 +374,47 @@ class BookingController extends Controller
             'x-api-version' => '2022-01-01'
         ])->get($url);
 
-        $data = $response->json();
+    // ✅ Check API response
+    if (!$response->successful()) {
+        return redirect('/appointment')->with('error', 'Payment verification failed');
+    }
 
-        $payment = Appointment::where('order_id', $orderId)->first();
+    $data = $response->json();
 
-        if ($payment && $data['order_status'] === 'PAID') {
+    $payment = Appointment::where('order_id', $orderId)->first();
 
-            $payment->update([
-                'status' => 1,
-                'payment_id' => $data['cf_order_id'] ?? null,
-                'payment_method' => json_encode($data['payments'] ?? [])
+    // ✅ Check payment exists
+    if (!$payment) {
+        return redirect('/appointment')->with('error', 'Order not found');
+    }
+
+    // ✅ Only update if payment is PAID and not already processed
+    if ($data['order_status'] === 'PAID' && $payment->status == 0) {
+
+        $payment->update([
+            'status' => 1,
+            'payment_id' => $data['cf_order_id'] ?? null,
+            'payment_method' => json_encode($data['payments'] ?? [])
+        ]);
+
+        // ✅ Now update user (AFTER SUCCESS)
+        $user = User::where('phone', $payment->phone)->first();
+
+        if ($user) {
+            if ($user->name == $payment->name) {
+                $user->increment('total_service');
+            }
+        } else {
+            User::create([
+                'name' => $payment->name,
+                'phone' => $payment->phone,
+                'total_service' => 1,
             ]);
-
-            return redirect('/appointment')->with('success', 'Payment Successful!');
         }
 
-        return redirect('/appointment')->with('error', 'Payment Failed!');
+        return redirect('/appointment')->with('success', 'Payment Successful!');
+    }
+
+    return redirect('/appointment')->with('error', 'Payment Failed!');
     }
 }
