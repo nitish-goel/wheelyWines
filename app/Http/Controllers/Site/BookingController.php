@@ -76,7 +76,7 @@ class BookingController extends Controller
             'service_name' => $request->service_name,
             'amount' => $request->amount,
             'order_id' => $orderId,
-            'status' => 0
+            'payment_status' => 'pending'
         ]);
 
         // Redirect to payment page
