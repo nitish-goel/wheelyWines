@@ -8,7 +8,9 @@ class Appointment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'phone','car_company', 'car_name','car_model','service_id','service_name', 'amount', 'order_id','transaction_id', 'payment_id', 'status','other','payment_method'];
+    protected $fillable = ['name', 'phone','car_company', 'car_name','car_model',
+    'service_id','service_name', 'amount', 'order_id','transaction_id', 'payment_id',
+    'payment_status','failure_reason','other','payment_method'];
 
     protected $casts = [
         'other' => 'array'

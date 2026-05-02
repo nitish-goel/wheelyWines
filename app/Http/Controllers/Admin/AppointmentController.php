@@ -13,12 +13,19 @@ class AppointmentController extends Controller
 {
     public function appointments($getStatus = 1)
     {   
-        $response = [];        
+        $response = [];  
+        $query = Appointment::query();      
         if(in_array($getStatus,[0,1])){
-            $checkStatus = $getStatus;
-            $header = ($getStatus == 1)? 'Approved Appointments':'Failed Appointments';
+
+            if ($getStatus == 1) {
+                $query->where('payment_status', 'PAID');
+                $header = 'Appointments';
+            } else {
+                $query->where('payment_status', '!=', 'PAID');
+                $header = 'Failed Appointments';
+            }
         }
-        $records = Appointment::where('status', $checkStatus)->orderBy('id','desc')->paginate(10);
+        $records = $query->orderBy('id','desc')->paginate(10);
         $response['users'] = $records;
         $response['thead'] = '<tr>
                                 <th>#</th>
@@ -35,11 +42,9 @@ class AppointmentController extends Controller
         $tbody = [];
         foreach ($records as $key => $rec) {
             $srNo = $records->firstItem() + $key;
-            $statusPayment = ($rec->status == 0)
-            ? '<span class="badge bg-warning">Fail</span>'
-            : (($rec->status == 1)
-                ? '<span class="badge bg-success">Success</span>'
-                : '<span class="badge bg-danger">Declined</span>');
+            $statusPayment = ($rec->payment_status == 'PAID')
+            ? '<span class="badge bg-success">paid</span>'
+            : '<span class="badge bg-danger">failed</span>';
            
             $tbody[$key]  = '<tr>
                                 <td>' .$srNo .'</td>

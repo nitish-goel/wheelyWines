@@ -106,7 +106,7 @@ class BookingController extends Controller
     }
 
     $data = $response->json();
-    dd($data);
+    // dd($data);
     $payment = Appointment::where('order_id', $orderId)->first();
 
     // ✅ Check payment exists
@@ -118,7 +118,7 @@ class BookingController extends Controller
     if ($data['order_status'] === 'PAID' && $payment->status == 0) {
 
         $payment->update([
-            'status' => 1,
+            'payment_status' => $data['order_status'],
             'payment_id' => $data['cf_order_id'] ?? null,
             'payment_method' => json_encode($data['payments'] ?? [])
         ]);
@@ -140,7 +140,12 @@ class BookingController extends Controller
 
         return redirect('/appointment')->with('success', 'Payment Successful!');
     }
-
+    // ❌ FAILED / EXPIRED / OTHER CASES
+    $payment->update([
+        'payment_status' => $data['order_status'],
+        'failure_reason' => $data['order_note'] ?? 'Payment failed or cancelled',
+        'payment_method' => json_encode($data)
+    ]);
     return redirect('/appointment')->with('error', 'Payment Failed!');
     }
 }

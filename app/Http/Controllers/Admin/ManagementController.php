@@ -21,13 +21,13 @@ class ManagementController extends Controller
         $response['users'] = User::count();
         $response['today_joined_users'] = User::whereDate('created_at', Carbon::today())->count();
 
-        $response['total_Appointment'] = Appointment::where('status', 1)->count();
-        $response['today_Appointment'] = Appointment::whereDate('created_at',Carbon::today())->where('status', 1)->count();
+        $response['total_Appointment'] = Appointment::where('payment_status', 'PAID')->count();
+        $response['today_Appointment'] = Appointment::whereDate('created_at',Carbon::today())->where('payment_status', 'PAID')->count();
         // $response['total_pending_appointment'] = Appointment::where('status', 1)->where('service_status', 0)->count();
         // $response['total_completed_appointment'] = Appointment::where('status', 1)->where('service_status', 1);
 
-        $response['total_appointment_payment'] = Appointment::where('status',1)->sum('amount');
-        $response['today_appointment_payment'] = Appointment::whereDate('created_at',Carbon::today())->where('status', 1)->sum('amount');
+        $response['total_appointment_payment'] = Appointment::where('payment_status','PAID')->sum('amount');
+        $response['today_appointment_payment'] = Appointment::whereDate('created_at',Carbon::today())->where('payment_status', 'PAID')->sum('amount');
         // dd($response);
         return view('admin.home',$response);
     }
