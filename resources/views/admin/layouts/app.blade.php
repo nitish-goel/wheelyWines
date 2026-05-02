@@ -306,9 +306,8 @@
                                 <span> Appointments Reports</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">                               
-                                <li><a href="{{route('appointments')}}">Pending Appointments</a></li>                            
-                                <li><a href="{{route('approve.appointments')}}">Approved Appointments</a></li>                            
-                                <li><a href="{{route('decline.appointments')}}">Declined Appointments</a></li>                            
+                                <li><a href="{{route('appointments')}}">Appointments</a></li>                            
+                                <li><a href="{{route('fail.appointments')}}">Failed Appointments</a></li>                            
                             </ul>
                              </li>
                           
