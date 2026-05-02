@@ -1,7 +1,7 @@
 # WheelyWines
 
 
-WheelyWines is an automobile service booking web application, similar to platforms that allow users to browse services, book appointments, and enable admins to manage workshops and customers. It is a Laravel-based web application containerized with Docker and deployed on Render using PostgreSQL.
+WheelyWines is an automobile service booking web application, similar to platforms that allow users to browse services, book appointments, and enable admins to manage workshops and customers. It is a Laravel-based web application containerized with Docker and deployed on Render using PostgreSQL as the database and Cashfree Payment Gateway for secure transactions.
 ---
 
 ## 🚀 Live Demo
@@ -10,6 +10,7 @@ Deployed on Render:
 
 ```
 https://wheelywines.onrender.com
+⚠️ App may take time to load due to Render free tier sleep mode.
 ```
 
 *(https://wheelywines.onrender.com)*
@@ -26,9 +27,41 @@ https://wheelywines.onrender.com
 * **Backend:** Laravel
 * **Language:** PHP 8.4
 * **Database:** PostgreSQL
+* **Payment Gateway:** Cashfree
 * **Containerization:** Docker
 * **Hosting:** Render
 * **Version Control:** Git & GitHub
+
+---
+
+## 💳 Payment Integration (Cashfree)
+
+WheelyWines now supports online payments using Cashfree Payment Gateway.
+
+### ✅ Features:
+* Secure payment processing
+* Order creation with unique order_id
+* Payment status handling:
+    * **PAID** → Appointment confirmed
+    * **FAILED** → Appointment marked as failed
+* Webhook support for real-time payment updates
+
+### 🔄 Payment Flow:
+
+```
+User books appointment
+↓
+Order created in backend
+↓
+Redirect to Cashfree payment page
+↓
+User completes payment
+↓
+Webhook/response received
+↓
+Appointment status updated (PAID / FAILED)
+
+```
 
 ---
 
@@ -68,6 +101,14 @@ DB_PORT=5432
 DB_DATABASE=your_db_name
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
+```
+
+###  Configure Cashfree (.env)
+
+```env
+CASHFREE_APP_ID=your_app_id
+CASHFREE_SECRET_KEY=your_secret_key
+CASHFREE_ENV=sandbox   # or production
 ```
 
 ###  Run Migrations
@@ -148,6 +189,11 @@ DB_PORT=5432
 DB_DATABASE=your_database_name
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
+
+# Cashfree
+CASHFREE_APP_ID=your_app_id
+CASHFREE_SECRET_KEY=your_secret_key
+CASHFREE_ENV=production
 ```
 
 ---
@@ -172,6 +218,7 @@ Dockerfile
 
 * Render free plan may sleep after inactivity.
 * PostgreSQL free plan has resource limits.
+* Use sandbox mode for testing payments
 * `SESSION_DRIVER=file` is recommended for simple cloud deployments.
 
 ---
