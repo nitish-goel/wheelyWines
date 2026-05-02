@@ -320,7 +320,7 @@
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="#">News</a></li>
-                                <li><a href="{{ route('add.qr') }}">Payment QR-Code</a></li>
+                                <!-- <li><a href="{{ route('add.qr') }}">Payment QR-Code</a></li> -->
 
                             </ul>
                         </li>

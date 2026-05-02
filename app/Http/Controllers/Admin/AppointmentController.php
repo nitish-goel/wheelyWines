@@ -11,18 +11,14 @@ use App\Models\Appointment;
 
 class AppointmentController extends Controller
 {
-    public function appointments($getStatus = 0)
+    public function appointments($getStatus = 1)
     {   
-        $response = [];
-        $checkStatus = 0;
-        $header ='Pending Appointments';
-        if(in_array($getStatus,[1,2])){
+        $response = [];        
+        if(in_array($getStatus,[0,1])){
             $checkStatus = $getStatus;
-            $header = ($getStatus == 1)? 'Approved Appointments':'Declined Appointments';
+            $header = ($getStatus == 1)? 'Approved Appointments':'Failed Appointments';
         }
         $records = Appointment::where('status', $checkStatus)->orderBy('id','desc')->paginate(10);
-
-        // dd($records);
         $response['users'] = $records;
         $response['thead'] = '<tr>
                                 <th>#</th>
@@ -33,89 +29,32 @@ class AppointmentController extends Controller
                                 <th>Vechile Model</th>
                                 <th>Service</th>
                                 <th>Payment</th>
-                                <th>Transaction ID</th>
-                                <th>Status</th>
-                                <th>Date</th>'
-                                . ($checkStatus == 0 ? '<th>Action</th>' : '') .
-                                '</tr>';
+                                <th>Payment Status</th>
+                                <th>Date</th>
+                                </tr>';
         $tbody = [];
         foreach ($records as $key => $rec) {
             $srNo = $records->firstItem() + $key;
             $statusPayment = ($rec->status == 0)
-            ? '<span class="badge bg-warning">Pending</span>'
+            ? '<span class="badge bg-warning">Fail</span>'
             : (($rec->status == 1)
-                ? '<span class="badge bg-success">Approved</span>'
+                ? '<span class="badge bg-success">Success</span>'
                 : '<span class="badge bg-danger">Declined</span>');
-
-            $approveBtn = '
-                <button 
-                    type="button"
-                    class="approveBtn btn btn-sm btn-outline-success"
-                    data-id="'.$rec->id.'"
-                    data-flag="approve"
-                    title="Click to Approve"
-                >
-                    <i class="bi bi-toggle-on"></i> Approve
-                </button>
-            ';
-            $declineBtn = '
-                <button 
-                    type="button"
-                    class="declineBtn btn btn-sm btn-outline-danger"
-                    data-id="'.$rec->id.'"
-                    data-flag="decline"
-                    title="Click to Decline"
-                >
-                    <i class="bi bi-toggle-off"></i> Decline
-                </button>
-            ';
+           
             $tbody[$key]  = '<tr>
                                 <td>' .$srNo .'</td>
-                                <td>' .$rec->name .'</td>
+                                <td>' .ucfirst($rec->name) .'</td>
                                 <td>' .$rec->phone .'</td>
                                 <td>' .$rec->car_company .'</td>
                                 <td>' .$rec->car_name .'</td>
                                 <td>' .$rec->car_model .'</td>
                                 <td>' .$rec->service_name .'</td>
                                 <td>₹' .number_format($rec->amount, 2) .'</td>
-                                <td>' .$rec->transaction_id .'</td>
                                 <td>' .$statusPayment .'</td>
-                                <td>' .$rec->created_at .'</td>'
-                                . ($checkStatus == 0 ? '<td>' .$approveBtn .' | '.$declineBtn .'</td>' : '') .                                
-                            '</tr>';
+                                <td>' .$rec->created_at .'</td>
+                            </tr>';
         }
-        $response['script'] = '
-        <script>
-        $(document).on("click", ".approveBtn, .declineBtn", function () {
-
-            if(!confirm("Are you sure for this action?")) return;
-
-            let btn  = $(this);
-            let id   = btn.data("id");
-            let flag = btn.data("flag");
-
-            $.ajax({
-                url: "'.route('updateAppointment').'",
-                type: "POST",
-                data: {
-                    _token: "'.csrf_token().'",
-                    id: id,
-                    flag: flag
-                },
-                success: function (response) {
-                    if (response.success) {                    
-                        showToast(response.message, "success");
-                    } else {
-                        showToast(response.message, "warning");
-                    }
-                },
-                error: function () {
-                    showToast("Something went wrong!", "danger");
-                }
-            });
-        });     
-        </script>
-        ';
+        $response['script'] = '';
         $response['tbody'] = $tbody;
         $response['header'] = $header;
         return view('admin.reports', $response);

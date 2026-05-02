@@ -294,28 +294,9 @@
                                         <span class="payment-note">(₹-Payment included with Services)</span>
                                     </label>
                                     <div class="payment-row">
-                                        <input type="number" name="amount" class="form-control" value="320" readonly>
-                                        <!-- <a href="http://car_services.test" class="theme-btn btn-style-one pay-btn">
-                                            Pay Now
-                                        </a> -->
-                                       
+                                        <input type="number" name="amount" class="form-control" value="320" readonly>                                                                           
                                     </div>                                    
-                                </div>
-                                <!-- @if(!empty($QR))
-                                        <div class="form-group mb-4">
-                                            <label>Scan QR-Code for Payment :-</label>
-
-                                            <div class="qr-image-box">
-                                                <img src="{{ asset('uploads/qr/'.$QR) }}" alt="QR Code">
-                                            </div>
-                                        </div>
-                                         @endif -->
-                                <!-- <div class="form-group">
-                                    <label>Transaction ID</label>
-                                    <input type="number" name="transaction_id" class="form-control" placeholder="transaction id" required>
-                                </div> -->
-
-                                <!-- <button type="submit" class="theme-btn btn-style-one w-100" onclick="payNow()"> -->
+                                </div>                               
                                 <button type="submit" class="theme-btn btn-style-one w-100">
                                     Book Appointment
                                 </button>
@@ -334,40 +315,6 @@
         document.getElementById('service_name').value = serviceName;
     });
 </script>
-
-<!-- <script>
-function payNow() {
-    const form = document.getElementById('appointmentForm');
-    fetch('/appointmentPayment', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        },
-        body: JSON.stringify({
-            name: form.name.value,
-            phone: form.phone.value,
-            car_company: form.car_company.value,
-            car_name: form.car_name.value,
-            car_model: form.car_model.value,
-            service_id: form.service_id.value,
-            service_name: form.service_name.value,
-            amount: form.amount.value
-        })
-    })
-    .then(res => res.json())
-    .then(data => {
-        const cashfree = Cashfree({
-            mode: "{{ env('CASHFREE_ENV') }}"
-        });
-
-        cashfree.checkout({
-            paymentSessionId: data.payment_session_id
-        });
-    });
-}
-</script>
-<script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script> -->
 @endsection
 
 
