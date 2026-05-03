@@ -115,7 +115,7 @@ class BookingController extends Controller
     }
 
     // ✅ Only update if payment is PAID and not already processed
-    if ($data['order_status'] === 'PAID' && $payment->status == 0) {
+    if ($data['order_status'] === 'PAID' && $payment->payment_status != 'PAID') {
 
         $payment->update([
             'payment_status' => $data['order_status'],
@@ -138,7 +138,8 @@ class BookingController extends Controller
             ]);
         }
 
-        return redirect('/appointment')->with('success', 'Payment Successful!');
+        // ✅ Show receipt instead of redirect
+        return view('site.booking.recipt', compact('payment'));
     }
     // ❌ FAILED / EXPIRED / OTHER CASES
     $payment->update([
