@@ -110,7 +110,7 @@
         <div class="details">
             <div><strong>Receipt No.</strong><span>#{{ $payment->order_id }}</span></div>
             <div><strong>Date</strong><span>{{ $payment->created_at->format('d M Y') }}</span></div>
-            <div><strong>Name :</strong><span>{{ $payment->name }}</span></div>
+            <div><strong>Name :</strong><span>{{ ucfirst($payment->name) }}</span></div>
         </div>
 
         <table style="width: 100%; border-top: 1px solid #000; border-bottom: 1px solid #000; margin-top: 20px; font-size: 14px;">
@@ -175,9 +175,9 @@
             };
             html2pdf().set(opt).from(element).save();
         }
-        window.onload = function() {
-            downloadPDF();
-        }
+        // window.onload = function() {
+        //     downloadPDF();
+        // }
     </script>
 
 </body>
